@@ -1,0 +1,70 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Attendance History</title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/students.css' %}">
+</head>
+<body>
+
+<div class="main">
+
+    <div class="topbar">
+
+        <h1>Attendance History</h1>
+
+    </div>
+
+    <div class="table-container">
+
+        <table>
+
+            <tr>
+                <th>Student</th>
+                <th>Status</th>
+                <th>Date</th>
+            </tr>
+
+            {% for i in data %}
+
+            <tr>
+
+                <td>{{ i.student.name }}</td>
+
+                <td>
+
+                    {% if i.status == 'Present' %}
+
+                        <span class="edit-btn">
+                            Present
+                        </span>
+
+                    {% else %}
+
+                        <span class="delete-btn">
+                            Absent
+                        </span>
+
+                    {% endif %}
+
+                </td>
+
+                <td>{{ i.date }}</td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+</html>

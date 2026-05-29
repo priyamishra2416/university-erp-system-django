@@ -1,0 +1,80 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Fees Management</title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/students.css' %}">
+</head>
+<body>
+
+<div class="main">
+
+    <div class="topbar">
+
+        <h1>Fees Management</h1>
+
+        <a href="{% url 'add_fees' %}"
+           class="btn">
+
+            + Add Fees
+
+        </a>
+
+    </div>
+
+    <div class="table-container">
+
+        <table>
+
+            <tr>
+                <th>Student</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Date</th>
+            </tr>
+
+            {% for i in data %}
+
+            <tr>
+
+                <td>{{ i.student.name }}</td>
+
+                <td>₹{{ i.amount }}</td>
+
+                <td>
+
+                    {% if i.status == 'Paid' %}
+
+                        <span class="edit-btn">
+                            Paid
+                        </span>
+
+                    {% else %}
+
+                        <span class="delete-btn">
+                            Pending
+                        </span>
+
+                    {% endif %}
+
+                </td>
+
+                <td>{{ i.date }}</td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+</html>

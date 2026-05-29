@@ -1,0 +1,86 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Student</title>
+
+    <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+</head>
+<body>
+
+{% if messages %}
+
+<div class="messages">
+
+    {% for message in messages %}
+
+    <div class="message {{ message.tags }}">{{ message }}</div>
+
+    {% endfor %}
+
+</div>
+
+{% endif %}
+
+<div class="container">
+
+    <div class="left">
+
+        <h1>Add Student</h1>
+
+        <p>
+            Add new students to the University ERP system.
+        </p>
+
+    </div>
+
+    <div class="right">
+
+        <h2>Student Form</h2>
+
+        <p><a href="{% url 'students' %}">Back to Students</a></p>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <input type="text"
+                   name="name"
+                     placeholder="Student Name"
+                     required>
+
+            <input type="email"
+                   name="email"
+                     placeholder="Email"
+                     required>
+
+            <input type="text"
+                   name="roll"
+                     placeholder="Roll Number"
+                     required>
+
+            <input type="text"
+                   name="department"
+                     placeholder="Department"
+                     required>
+
+            <input type="number"
+                   name="semester"
+                     placeholder="Semester"
+                     required>
+
+            <button type="submit">
+                Add Student
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

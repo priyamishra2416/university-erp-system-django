@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Student</title>
+</head>
+<body>
+
+{% if messages %}
+
+<div class="messages">
+
+       {% for message in messages %}
+
+       <div class="message {{ message.tags }}">{{ message }}</div>
+
+       {% endfor %}
+
+</div>
+
+{% endif %}
+
+    <h1>Edit Student</h1>
+
+       <p><a href="{% url 'students' %}">Back to Students</a></p>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <input type="text"
+               name="name"
+               value="{{ student.name }}"
+               required><br><br>
+
+        <input type="email"
+               name="email"
+               value="{{ student.email }}"
+               required><br><br>
+
+        <input type="text"
+               name="roll"
+               value="{{ student.roll }}"
+               required><br><br>
+
+        <input type="text"
+               name="department"
+               value="{{ student.department }}"
+               required><br><br>
+
+        <input type="number"
+               name="semester"
+               value="{{ student.semester }}"
+               required><br><br>
+
+        <button type="submit">
+            Update Student
+        </button>
+
+    </form>
+
+</body>
+</html>

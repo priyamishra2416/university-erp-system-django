@@ -1,0 +1,111 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>UniERP</title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/home.css' %}">
+
+</head>
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <div class="logo">
+            UniERP
+        </div>
+        <div class="nav-links">
+
+            <a href="{% url 'home' %}">Home</a>
+
+            <a href="#about">About</a>
+
+            <a href="{% url 'login' %}">
+                Login
+            </a>
+
+            <a href="{% url 'register' %}"
+               class="register-btn">
+
+                Register
+
+            </a>
+
+        </div>
+
+    </nav>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <!-- LEFT -->
+
+        <div class="left">
+
+            <h1>
+
+                Smart University
+                ERP Solution
+
+            </h1>
+
+            <p>
+
+                Manage students, attendance,
+                fees, results and faculty
+                with a modern SaaS platform.
+
+            </p>
+
+            <div class="buttons">
+
+                <a href="{% url 'register' %}"
+                   class="start-btn">
+
+                    Get Started
+
+                </a>
+
+                <a href="{% url 'login' %}"
+                   class="login-btn">
+
+                    Login
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT -->
+
+        <div class="right">
+
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135755.png"
+                 alt="Student illustration"
+                 class="hero-illustration">
+
+        </div>
+
+    </section>
+
+    <section id="about" class="about">
+        <div>
+            <h2>Built for a university workflow</h2>
+            <p>Fast navigation, clean cards, responsive tables, and a dashboard-first experience.</p>
+        </div>
+    </section>
+
+</body>
+</html>

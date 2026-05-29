@@ -1,0 +1,88 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Add Timetable</title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/auth.css' %}">
+
+</head>
+<body>
+
+{% if messages %}
+
+<div class="messages">
+
+    {% for message in messages %}
+
+    <div class="message {{ message.tags }}">{{ message }}</div>
+
+    {% endfor %}
+
+</div>
+
+{% endif %}
+
+<div class="container">
+
+    <div class="left">
+
+        <h1>
+            Add Timetable
+        </h1>
+
+        <p>
+            Manage university class schedules
+            and faculty timings.
+        </p>
+
+    </div>
+
+    <div class="right">
+
+        <h2>
+            Timetable Form
+        </h2>
+
+        <p><a href="{% url 'timetable' %}">Back to Timetable</a></p>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <input type="text"
+                   name="day"
+                   placeholder="Day">
+
+            <input type="text"
+                   name="subject"
+                   placeholder="Subject">
+
+            <input type="text"
+                   name="faculty"
+                   placeholder="Faculty Name">
+
+            <input type="text"
+                   name="time"
+                   placeholder="10:00 AM - 11:00 AM">
+
+            <button type="submit">
+
+                Add Timetable
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

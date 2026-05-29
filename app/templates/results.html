@@ -1,0 +1,89 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Results Management</title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/students.css' %}">
+</head>
+<body>
+
+<div class="main">
+
+    <!-- TOPBAR -->
+
+    <div class="topbar">
+
+        <h1>Results Management</h1>
+
+        <a href="{% url 'add_result' %}"
+           class="btn">
+
+            + Add Result
+
+        </a>
+
+    </div>
+
+    <!-- RESULTS TABLE -->
+
+    <div class="table-container">
+
+        <table>
+
+            <tr>
+                <th>Student</th>
+                <th>Subject</th>
+                <th>Marks</th>
+                <th>CGPA</th>
+                <th>Download</th>
+            </tr>
+
+            {% for i in data %}
+
+            <tr>
+
+                <td>
+                    {{ i.student.name }}
+                </td>
+
+                <td>
+                    {{ i.subject }}
+                </td>
+
+                <td>
+                    {{ i.marks }}
+                </td>
+
+                <td>
+                    {{ i.cgpa }}
+                </td>
+
+                <td>
+
+                    <a href="{% url 'download_result' i.id %}"
+                       class="edit-btn">
+
+                        PDF
+
+                    </a>
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+</html>

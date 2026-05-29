@@ -1,0 +1,80 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Attendance</title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/students.css' %}">
+</head>
+<body>
+
+<div class="main">
+
+    <!-- TOPBAR -->
+
+    <div class="topbar">
+
+        <h1>Attendance Management</h1>
+
+    </div>
+
+    <!-- TABLE -->
+
+    <div class="table-container">
+
+        <table>
+
+            <tr>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Semester</th>
+                <th>Present</th>
+                <th>Absent</th>
+            </tr>
+
+            {% for i in students %}
+
+            <tr>
+
+                <td>{{ i.name }}</td>
+
+                <td>{{ i.department }}</td>
+
+                <td>{{ i.semester }}</td>
+
+                <td>
+
+                    <a href="{% url 'mark_attendance' i.id %}"
+                       class="edit-btn">
+                        Present
+                    </a>
+
+                </td>
+
+                <td>
+
+                    <a href="{% url 'mark_absent' i.id %}"
+                       class="delete-btn">
+                        Absent
+                    </a>
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+</html>

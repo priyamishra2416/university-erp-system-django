@@ -1,0 +1,126 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Add Fees</title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/auth.css' %}">
+
+</head>
+<body>
+
+{% if messages %}
+
+<div class="messages">
+
+    {% for message in messages %}
+
+    <div class="message {{ message.tags }}">{{ message }}</div>
+
+    {% endfor %}
+
+</div>
+
+{% endif %}
+
+<div class="container">
+
+    <!-- LEFT -->
+
+    <div class="left">
+
+        <h1>
+            Fees Management
+        </h1>
+
+        <p>
+            Manage student fees,
+            payment status and records
+            with UniERP SaaS Dashboard.
+        </p>
+
+    </div>
+
+    <!-- RIGHT -->
+
+    <div class="right">
+
+        <h2>
+            Add Fees
+        </h2>
+
+        <p><a href="{% url 'fees' %}">Back to Fees</a></p>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <!-- STUDENT -->
+
+            <select name="student" required>
+
+                <option value="">
+                    Select Student
+                </option>
+
+                {% for i in students %}
+
+                <option value="{{ i.id }}">
+
+                    {{ i.name }}
+
+                </option>
+
+                {% endfor %}
+
+            </select>
+
+            <!-- AMOUNT -->
+
+            <input type="number"
+                   name="amount"
+                   placeholder="Fees Amount"
+                   required>
+
+            <!-- STATUS -->
+
+            <select name="status" required>
+
+                <option value="">
+                    Payment Status
+                </option>
+
+                <option value="Paid">
+                    Paid
+                </option>
+
+                <option value="Pending">
+                    Pending
+                </option>
+
+            </select>
+
+            <!-- BUTTON -->
+
+            <button type="submit">
+
+                Add Fees
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

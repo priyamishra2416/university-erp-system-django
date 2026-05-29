@@ -1,0 +1,78 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Faculty Management</title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/students.css' %}">
+</head>
+<body>
+
+<div class="main">
+
+    <div class="topbar">
+
+        <div>
+            <h1>Faculty Management</h1>
+            <p>Manage faculty records from the database.</p>
+        </div>
+
+        <div class="top-actions">
+            <a href="{% url 'dashboard' %}" class="btn btn-secondary">Dashboard</a>
+            <a href="{% url 'settings' %}" class="btn btn-secondary">Settings</a>
+            <a href="{% url 'add_faculty' %}" class="btn">+ Add Faculty</a>
+        </div>
+
+    </div>
+
+    {% if messages %}
+
+    <div class="messages">
+
+        {% for message in messages %}
+
+        <div class="message {{ message.tags }}">{{ message }}</div>
+
+        {% endfor %}
+
+    </div>
+
+    {% endif %}
+
+    <div class="table-container">
+
+        <table>
+
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Department</th>
+                <th>Subject</th>
+            </tr>
+
+            {% for i in data %}
+            <tr>
+                <td>{{ i.name }}</td>
+                <td>{{ i.email }}</td>
+                <td>{{ i.department }}</td>
+                <td>{{ i.subject }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">No faculty records found.</td>
+            </tr>
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+</html>

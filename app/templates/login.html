@@ -1,0 +1,84 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+</head>
+<body>
+
+<div class="container">
+
+    {% if messages %}
+
+    <div class="messages">
+
+        {% for message in messages %}
+
+        <div class="message {{ message.tags }}">{{ message }}</div>
+
+        {% endfor %}
+
+    </div>
+
+    {% endif %}
+
+    <!-- LEFT -->
+
+    <div class="left">
+
+        <h1>Welcome Back</h1>
+
+        <p>
+            Login to access your University ERP dashboard,
+            attendance, results and student management.
+        </p>
+
+    </div>
+
+    <!-- RIGHT -->
+
+    <div class="right">
+
+        <h2>Login</h2>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <input type="text"
+                   name="username"
+                   placeholder="Username">
+
+            <input type="password"
+                   name="password"
+                   placeholder="Password">
+
+            <button type="submit">
+                Login
+            </button>
+
+        </form>
+
+        <div class="link">
+
+            <a href="{% url 'register' %}">
+                Create New Account
+            </a>
+
+            <a href="{% url 'home' %}">
+                Back to Home
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

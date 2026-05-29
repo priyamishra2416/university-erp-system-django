@@ -1,0 +1,74 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Timetable</title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/students.css' %}">
+
+</head>
+<body>
+
+<div class="main">
+
+    <div class="topbar">
+
+        <h1>
+            Timetable Management
+        </h1>
+
+        <a href="{% url 'add_timetable' %}"
+           class="btn">
+
+            + Add Timetable
+
+        </a>
+
+    </div>
+
+    <div class="table-container">
+
+        <table>
+
+            <tr>
+
+                <th>Day</th>
+
+                <th>Subject</th>
+
+                <th>Faculty</th>
+
+                <th>Time</th>
+
+            </tr>
+
+            {% for i in data %}
+
+            <tr>
+
+                <td>{{ i.day }}</td>
+
+                <td>{{ i.subject }}</td>
+
+                <td>{{ i.faculty }}</td>
+
+                <td>{{ i.time }}</td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+</html>
